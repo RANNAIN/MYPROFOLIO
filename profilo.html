@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+</head>
+
+<body
+  class="bg-gradient-to-br from-purple-50 to-blue-50 text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-gray-100">
+
+  <!-- Navigation -->
+  <div class="md:flex items-center space-x-1 hidden sticky top-0 bg-white dark:bg-gray-800 z-50" id="nav-content">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-7">
+          <a href="#" class="flex items-center py-4 px-2">
+            <span class="font-semibold text-purple-700 dark:text-purple-400 text-lg">My Portfolio</span>
+          </a>
+        </div>
+        <div class="flex items-center space-x-1 sm:flex">
+          <a href="#home" class="py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">Home</a>
+          <a href="#about" class="py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">About</a>
+          <a href="#skills" class="py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">Skills</a>
+          <a href="#projects" class="py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">Projects</a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button class="outline-none mobile-menu-button">
+            <svg class="w-6 h-6 text-gray-700 dark:text-gray-300 hover:text-purple-600" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+          <div class="hidden mobile-menu">
+            <ul class="flex flex-col space-y-2">
+              <li><a href="#home"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Home</a>
+              </li>
+              <li><a href="#about"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">About</a>
+              </li>
+              <li><a href="#skills"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Skills</a>
+              </li>
+              <li><a href="#projects"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Projects</a>
+              </li>
+              <li><a href="#testimonials"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Testimonials</a>
+              </li>
+              <li><a href="#blog"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Blog</a>
+              </li>
+              <li><a href="#contact"
+                  class="block text-sm px-2 py-4 text-gray-700 dark:text-gray-300 hover:bg-purple-600 hover:text-white transition duration-300">Contact</a>
+              </li>
+            </ul>
+          </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="#contact" class="py-4 px-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">Contact</a>
+    <button id="theme-toggle" class="p-2 text-gray-700 dark:text-gray-300 hover:text-purple-600">
+      <span id="theme-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="py-20 bg-gradient-to-br from-purple-600 to-blue-600 text-white min-h-screen"
+    data-aos="fade-down">
+    <div class="container mx-auto text-center">
+      <div class="flex items-center justify-center">
+        <!-- Profile Image Container -->
+        <div class="relative w-32 h-32 rounded-full overflow-hidden shadow-lg">
+          <!-- Profile Image -->
+          <img src="./photo/photo_2025-01-24_00-25-04.jpg" alt="Profile Image" class="w-full h-full object-cover" />
+          <!-- Online Status Indicator (Optional) -->
+          <div class="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+        </div>
+      </div>
+      <br>
+      <h1 class="text-4xl font-bold" id="typewriter"></h1>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const typewriterElement = document.getElementById('typewriter');
+          const text = "Hi, I'm Yan Naing Win";
+          let index = 0;
+
+          function type() {
+            if (index < text.length) {
+              typewriterElement.textContent += text.charAt(index);
+              index++;
+              if (index === text.length) {
+                setTimeout(() => {
+                  typewriterElement.textContent = '';
+                  index = 0;
+                  const newText = "A Backend Developer";
+                  function deleteAndType() {
+                    if (index < newText.length) {
+                      typewriterElement.textContent += newText.charAt(index);
+                      index++;
+                      setTimeout(deleteAndType, 150);
+                    }
+                  }
+                  deleteAndType();
+                }, 2000);
+              }
+              setTimeout(type, 150);
+            }
+          }
+          let loopCount = 0;
+
+          function type() {
+            if (loopCount < 50) {
+              if (index < text.length) {
+                typewriterElement.textContent += text.charAt(index);
+                index++;
+                if (index === text.length) {
+                  setTimeout(() => {
+                    typewriterElement.textContent = '';
+                    index = 0;
+                    const newText = "Junior Developer";
+                    function deleteAndType() {
+                      if (index < newText.length) {
+                        typewriterElement.textContent += newText.charAt(index);
+                        index++;
+                        setTimeout(deleteAndType, 150);
+                      } else {
+                        loopCount++;
+                        setTimeout(() => {
+                          typewriterElement.textContent = '';
+                          index = 0;
+                          type();
+                        }, 2000);
+                      }
+                    }
+                    deleteAndType();
+                  }, 2000);
+                }
+                setTimeout(type, 150);
+              }
+            }
+          }
+          type();
+        });
+      </script>
+      <p class="mt-4 text-xl">A passionate fresher! developer with a knack for creating efficient and scalable web
+        applications.
+      </p>
+      <a href="#projects"
+        class="mt-8 inline-block bg-white text-purple-600 py-2 px-6 rounded-full hover:bg-purple-50 transition-transform transform hover:scale-105">View
+        My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md min-h-screen" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">About Me</h2>
+      <h4 class="text-3xl font-bold text-blue-300 border-b-4 border-blue-100 pb-2">Education</h4>
+      <ul>
+        <li>
+          <p class="mt-2text-2xl font-bold text-gray-800"> Diploma OF AGTI
+            (INSEIN -IT) <br>
+            <span>Courses are : <BR>A+,NETWORKING, HTML,CSS,C++,C#,PHP AND MYSQL for database</span>
+          </p>
+        </li>
+        <li>
+          <p class="text-gray-800 text-md">University of
+            Taunggok's Student (halt at 2022)</p>
+        </li>
+      </ul>
+      <p class="mt-4 text-gray-700 text-center  leading-relaxed">My name is Yan Naing Win,live in yangon and I am
+        passionate
+        about programming and
+        web development. I studied and practiced programming simultaneously. Although I have no professional
+        experience in this field but i have hands on experience with my projects, I am eager for new
+        challenges,searching for intership which challanging me.
+        specializing and focusing on backend development with PHP & Laravel. I am well-versed in Laravel
+        concepts and documentation, such as Laravel policy, middleware for authentication and authorization,
+        and
+        more. Additionally, I am familiar with HTML5, CSS3, Tailwind CSS, and JavaScript.
+      </p><br>
+      <p class="mt-4 text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto">
+
+        I'm an enthusiastic intern and fresher developer with a strong passion for problem-solving. My primary focus is
+        on backend development, particularly with PHP and the Laravel framework, utilizing MySQL and SQLite databases.
+        Additionally, I have a keen interest in other programming languages such as C# and possess a solid understanding
+        of frontend development.
+      </p><br>
+      <p class="text-center"> Download my CV <a href="./resume/Yan Naing Win Resume of landscape.pdf"
+          class="text-purple-600 py-2 px-4 hover:underline font-bold">DOWNLOAD
+          HERE</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
+    data-aos="fade-right">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">Skills</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Skill 1 -->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/html-icon.png" alt="HTML" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">HTML</h3>
+        </div>
+        <!-- Skill 2 -->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/css-icon.png" alt="CSS" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">CSS</h3>
+        </div>
+        <!-- Skill 3 -->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/javascript-icon.png" alt="JAVASCRIPT" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">JAVASCRIPT(foundation)</h3>
+        </div>
+        <!-- Skill 5-->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/laravel-icon.png" alt="Laravel" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">Vue.js (learning)</h3>
+        </div>
+        <!-- Skill 4 -->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/php-icon.png" alt="PHP" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">PHP</h3>
+        </div>
+        <!-- Skill 5-->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/laravel-icon.png" alt="Laravel" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">LARAVEL</h3>
+        </div>
+        <!-- Skill 6 -->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/cpp-icon.png" alt="C++" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">MysQl</h3>
+        </div>
+        <!-- Skill 7-->
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/csharp-icon.png" alt="C#" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">Sqlite</h3>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/csharp-icon.png" alt="C#" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">Git & GitHub</h3>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:scale-105 transition-transform">
+          <img src="path/to/csharp-icon.png" alt="C#" class="mx-auto">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">A+ & NETWORKING</h3>
+        </div>
+        <!-- Add more skills -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md min-h-screen"
+    data-aos="fade-left">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">My Projects</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <img src="https://via.placeholder.com/400x200" alt="Project 1" class="rounded-lg">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">MyToDoApp</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">A laravel CRUD web application for managing tasks.</p>
+          <a href="#" class="mt-4 inline-block text-purple-600 hover:underline">View Project</a>
+        </div>
+        <!-- Project 2 -->
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <img src="https://via.placeholder.com/400x200" alt="Project 2" class="rounded-lg">
+          <h3 class="mt-4 text-xl font-bold text-purple-700 dark:text-purple-400">A -ecommerce</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">An e-commerce site built with Laravel.</p>
+          <a href="#" class="mt-4 inline-block text-purple-600 hover:underline">View Projec 2t</a>
+        </div>
+
+        <!-- Add more projects -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <!-- <section id="testimonials"
+    class="py-20 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">Testimonials</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <p class="text-gray-600 dark:text-gray-300">"Great work! [Your Name] delivered exactly what we needed on time
+            and within budget."</p>
+          <p class="mt-4 font-bold text-purple-700 dark:text-purple-400">- Client Name</p>
+        </div>
+        
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Blog Section -->
+  <!-- <section id="blog" class="py-20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md min-h-screen" data-aos="fade-down">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">Blog</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400">Post Title 1</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">A brief description of the blog post.</p>
+          <a href="#" class="mt-4 inline-block text-purple-600 hover:underline">Read More</a>
+        </div>
+   
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400">Post Title 2</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">A brief description of the blog post.</p>
+          <a href="#" class="mt-4 inline-block text-purple-600 hover:underline">Read More</a>
+        </div>
+     
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-purple-600 to-blue-600 text-white min-h-screen"
+    data-aos="fade-up">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold">Contact Me</h2>
+      <p class="mt-4 text-xl">Feel free to reach out to me through any of the platforms below:</p>
+      <BR></BR>
+      <div class="mt-20 flex justify-center space-x-6">
+        <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-white hover:text-purple-300">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .733.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.312h3.587l-.467 3.622h-3.12v9.294h6.116c.733 0 1.325-.591 1.325-1.324v-21.351c0-.733-.592-1.325-1.325-1.325z" />
+          </svg>
+        </a>
+        <a href="https://github.com/yourprofile" target="_blank" class="text-white hover:text-purple-300">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.527.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.005-.404 1.02.005 2.048.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.649.241 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.803 5.62-5.475 5.92.43.37.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.218.694.825.576 4.765-1.587 8.2-6.084 8.2-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+        <a href="mailto:your-email@example.com" class="text-white hover:text-purple-300">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 12.713l-11.985-7.713h23.97l-11.985 7.713zm-12-8.713v16h24v-16h-24zm12 10.287l-12-7.287v14.287h24v-14.287l-12 7.287z" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-white hover:text-purple-300">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M22.23 0h-20.46c-.974 0-1.77.796-1.77 1.77v20.46c0 .974.796 1.77 1.77 1.77h20.46c.974 0 1.77-.796 1.77-1.77v-20.46c0-.974-.796-1.77-1.77-1.77zm-15.538 20.452h-3.077v-10.769h3.077v10.769zm-1.538-12.308c-.987 0-1.79-.803-1.79-1.79s.803-1.79 1.79-1.79 1.79.803 1.79 1.79-.803 1.79-1.79 1.79zm13.846 12.308h-3.077v-5.385c0-1.282-.026-2.923-1.785-2.923-1.785 0-2.058 1.396-2.058 2.835v5.473h-3.077v-10.769h2.949v1.474h.042c.41-.776 1.41-1.59 2.899-1.59 3.099 0 3.669 2.04 3.669 4.692v6.193z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md py-6">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-600 dark:text-gray-300"> 2025 YanNaing.com.com. Thanks buddy.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000, // Animation duration
+      once: true, // Animate only once
+    });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      themeIcon.textContent = body.classList.contains('dark') ? '🌙' : '☀️';
+    });
+  </script>
+
+</body>
+
+</html>
